@@ -14,5 +14,5 @@ wetlab.
 The lab forms part of the Austrian FWF Cluster of Excellence
 [*Microbiomes Drive Planetary Health*](https://microplanet.at/) and collaborates with other
 researchers and industry all across the globe. If you are interested in learning more feel
-free to check out our [team](https://dienerlab.com/team), [lab values](https://dienerlab.com//guide), 
-[research areas](https://dienerlab.com//reserach), and [publications](https://dienerlab.com//pubs).
+free to check out our [team](https://dienerlab.com/team), [lab values](https://dienerlab.com/guide),
+[research areas](https://dienerlab.com/reserach), and [publications](https://dienerlab.com/pubs).
