@@ -39,7 +39,7 @@ def run_and_check(args, check, message, failure, success):
 
 if __name__ == "__main__":
     run_and_check(
-        ["mv", "{HOME}/.bashrc", "{HOME}/.bashrc.old"],
+        ["mv", f"{HOME}/.bashrc", f"{HOME}/.bashrc.old"],
         "",
         "Backing up old bashrc...",
         "failed backing up :/",
@@ -72,8 +72,7 @@ if __name__ == "__main__":
         )
 
         run_and_check(
-            ["bash", "Miniconda3-latest-Linux-x86_64.sh", "-bfp",
-             "%s/miniconda3" % os.environ["HOME"]],
+            ["bash", "Miniconda3-latest-Linux-x86_64.sh", "-bfp", f"{HOME}/miniconda3"],
             "installation finished.",
             "Installing miniconda...",
             "could not install miniconda :/",
