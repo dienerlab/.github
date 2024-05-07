@@ -4,10 +4,10 @@ import os
 import sys
 from subprocess import Popen, PIPE
 
-has_conda = os.path.exists("%s/miniconda3/condabin/conda" % os.environ["HOME"])
+has_conda = os.path.exists("%s/miniforge3/condabin/conda" % os.environ["HOME"])
 
 MINICONDA_PATH = (
-    "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+    "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
 )
 GITHUB_PATH = (
     "https://raw.githubusercontent.com/dienerlab/.github/main"
@@ -17,8 +17,8 @@ HOME = os.environ["HOME"]
 
 def cleanup():
     """Remove downloaded files."""
-    if os.path.exists("Miniconda3-latest-Linux-x86_64.sh"):
-        os.remove("Miniconda3-latest-Linux-x86_64.sh")
+    if os.path.exists("Miniforge3-Linux-x86_64.sh"):
+        os.remove("Miniforge3-Linux-x86_64.sh")
     print("Cleaned up unneeded files.")
 
 
@@ -38,7 +38,7 @@ def run_and_check(args, check, message, failure, success):
 
 
 if __name__ == "__main__":
-    print(HOME)
+    print(f":: Your home directory is {HOME}.")
     run_and_check(
         ["mv", f"{HOME}/.bashrc", f"{HOME}/.bashrc.old"],
         "",
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     )
 
     run_and_check(
-            ["wget", f"{GITHUB_PATH}/.bashrc"],
+            ["wget", f"{GITHUB_PATH}/.bashrc", "-O", f"{HOME}/.bashrc"],
             "saved",
             "Downloading bashrc...",
             "failed downloading bashrc 😭",
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         )
 
     run_and_check(
-            ["wget", f"{GITHUB_PATH}/.tmux.conf"],
+            ["wget", f"{GITHUB_PATH}/.tmux.conf", "-O", f"{HOME}/.tmux.conf"],
             "saved",
             "Downloading tmux config",
             "failed downloading config 😭",
@@ -67,23 +67,23 @@ if __name__ == "__main__":
         run_and_check(
             ["wget", MINICONDA_PATH],
             "saved",
-            "Downloading miniconda...",
-            "failed downloading miniconda 😭",
+            "Downloading miniforge...",
+            "failed downloading miniforge 😭",
             "Done."
         )
 
         run_and_check(
-            ["bash", "Miniconda3-latest-Linux-x86_64.sh", "-bfp", f"{HOME}/miniconda3"],
+            ["bash", "Miniforge3-Linux-x86_64.sh", "-bfp", f"{HOME}/miniforge3"],
             "installation finished.",
-            "Installing miniconda...",
-            "could not install miniconda :/",
-            "Installed miniconda to `~/miniconda3`."
+            "Installing miniforge...",
+            "could not install miniforge :/",
+            "Installed miniforge to `~/miniforge3`."
         )
     else:
         print("Miniconda is already installed. Skipped.")
 
     run_and_check(
-        ["%s/miniconda3/condabin/conda" % os.environ["HOME"], "init"],
+        [f"{HOME}/miniforge3/condabin/conda", "init"],
         "",
         "Running conda init...",
         "failed initializing conda :/",
