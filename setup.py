@@ -38,6 +38,7 @@ def run_and_check(args, check, message, failure, success):
 
 
 if __name__ == "__main__":
+    print(HOME)
     run_and_check(
         ["mv", f"{HOME}/.bashrc", f"{HOME}/.bashrc.old"],
         "",
