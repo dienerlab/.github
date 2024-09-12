@@ -17,4 +17,4 @@ researchers and industry all across the globe. If you are interested in learning
 free to check out our [team](https://dienerlab.com/team), [lab values](https://dienerlab.com/guide),
 [research areas](https://dienerlab.com/reserach), and [publications](https://dienerlab.com/pubs).
 
-**[wiki](https://github.com/dienerlab/.github/wiki)**
+📕 **[wiki](https://github.com/dienerlab/.github/wiki)**
