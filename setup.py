@@ -39,13 +39,14 @@ def run_and_check(args, check, message, failure, success):
 
 if __name__ == "__main__":
     print(f":: Your home directory is {HOME}.")
-    run_and_check(
-        ["mv", f"{HOME}/.bashrc", f"{HOME}/.bashrc.old"],
-        "",
-        "Backing up old bashrc...",
-        "failed backing up :/",
-        "Done."
-    )
+    if os.path.exists(f"{HOME}/.bashrc"):
+        run_and_check(
+            ["mv", f"{HOME}/.bashrc", f"{HOME}/.bashrc.old"],
+            "",
+            "Backing up old bashrc...",
+            "failed backing up :/",
+            "Done."
+        )
 
     run_and_check(
             ["wget", f"{GITHUB_PATH}/.bashrc", "-O", f"{HOME}/.bashrc"],
